@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header.ejs') %>
+<body class="dark-page justify-content-center ">
+    <%- include('partials/navbar.ejs') %>
+    <div class="container text-center justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-start g-2">
+            <div class="text-left col-lg-8 align-items-center">
+                <%- include('partials/homeposts') %>
+            </div>
+            
+            <div class="text-left col-lg-4 align-items-center">
+                <br>
+                <div class="card light-page rounded-0 border-0 border-bottom">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0 light-page">
+                            <p>A journey of a thousand miles begins with a single step</p>
+                            <footer class="blockquote-footer">
+                                <cite title="Source title">Lao Tzu</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <br>
+                <%- include('partials/newpost') %>
+            </div>
+            
+        </div>
+</div>
+<%- include('partials/footer.ejs') %>
+</body>
+</html>

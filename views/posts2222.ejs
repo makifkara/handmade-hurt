@@ -1,0 +1,60 @@
+
+
+
+
+
+
+    <%- include('partials/header.ejs') %>
+<body>
+    <h1 class="text-center">All Posts</h1>
+    <% if (locals.posts) { %>
+        <% let postCount = 0 %>
+    <% for( let row = 0; row < posts.length/3; row++ ) { %>
+        <div
+            class="row justify-content-center align-items-center g-2"
+        >
+        <% for( let p = 0; p < 3; p++ ) { %>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= posts[postCount].title %></h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= posts[postCount].date %></h6>
+                      <p class="card-text"><p><%= posts[postCount].content %></p>
+                      <div class="container-sm">
+                        <div
+                            class="row justify-content-center align-items-center g-2"
+                        >
+                            <div class="col"><form action="/readPost" method="post">
+                                <input type="hidden" name="postID" value="<%= posts[postCount].postID %>">
+                                <button type="submit" class="btn btn-success btn-sm" > Read </button>
+                              </form></div>
+                            <div class="col"><form action="/selectPost" method="post">
+                                <input type="hidden" name="postID" value="<%= posts[postCount].postID %>">
+                                <button type="submit" class="btn btn-warning btn-sm" > Edit </button>
+                              </form></div>
+                            <div class="col">                  <form action="/deletePost" method="post">
+                                <input type="hidden" name="postID" value="<%= posts[postCount].postID %>">
+                                <button type="submit" class="btn btn-danger btn-sm" > Delete </button>
+                              </form></div>
+                        </div>
+                        
+                      </div>
+                      
+    
+                      </div>
+                      
+    
+                    </div>
+                </div>
+            <% postCount++; } %>
+        </div>
+        
+    
+    <% } %>
+    <% } %>
+    
+</body>
+<%- include('partials/footer') %>
+
+
+

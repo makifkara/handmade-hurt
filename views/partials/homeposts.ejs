@@ -1,0 +1,36 @@
+<div class="container justify-content-center align-items-center col-lg-10 light-page p-3">
+    <div class="row justify-content-center align-items-center g-2">
+        <% posts.slice().reverse().forEach(post => { %>
+            <div class="col-12">
+                <div class="card my-3" >
+                    <div class="card-body">
+                        <div class="post-card-my container">
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col"><h2 class="light-page text-start card-title-my"><%= post.title %></h2>
+                                    <div class="row justify-content-start align-items-start g-2 p-1" >
+                                        <div class="col rd-30 text-start text-secondary"><%= post.date %></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start align-items-start text-start g-2 p-1">
+                                <div class="col">
+                                    <%= post.content.slice(0, 250) %>
+                                    <% if (post.content.length > 250) { %>
+                                        ...
+                                     <form action="/selectreadPost" method="post" class="d-inline">
+                                        <button type="submit" class="d-inline rounded"><strong > More </strong></button> 
+                                        <input type="hidden" name="postID" class="d-inline" value="<%= post.postID %>">
+                                    </form>
+                                    <% } %>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+</div>
+

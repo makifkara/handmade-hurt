@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs') %>
+<body class="dark-page">
+  <%- include('partials/navbar.ejs') %>
+
+  <div class="container text-center align-items-start">
+    <div
+        class="row justify-content-center align-items-start g-2">
+        <div class="text-left col-4 align-items-center">
+          <h2>Select a post to edit</h2>
+          <div class="list-group align-items-center">
+            
+            <% posts.slice().reverse().forEach(post => { %>
+              <form action="/selectPost" method="post">
+                <input type="hidden" name="postID" value="<%= post.postID %>">
+                <button type="submit" class="list-group-item list-group-item-action" > <%= post.title %> </button>
+              </form>
+            <% }) %>
+          </div>
+        </div>
+        <% if (locals.selectedPost) { %>
+          <div class="text-center col-8 align-self-start">
+            <form action="/update" method="POST" class="text-center align-self-center col">
+              <h3 class="h3 mb-3 fw-normal">Edit Post</h3>
+              <div class="row justify-content-center align-self-center g-2">
+                  <div class="col-8 align-self-center">
+                      <label for="floatingInput">Title</label>
+                      <input type="text" name="title" class="form-control align-self-center" value="<%= selectedPost.title %>">
+                  </div>
+              </div>
+              <div class="row justify-content-center align-self-left g-2">
+                  <div class="col-8 align-self-left">
+                      <label for="floatingContent align-self-start">Content</label>
+                      <textarea type="text" name="content" class="form-control text-left" rows="6" cols="50"> <%= selectedPost.content %>
+                      </textarea>
+                  </div>
+              </div>            
+              <input type="hidden" name="postID" value="<%= selectedPost.postID %>">
+              <button class="btn btn-primary col-md-4 btn btn-warning btn-sm my-3" type="submit" > Update Post </button>
+
+            </form>
+          </div>
+        <% } else { %>
+          <div class="text-center col-8 align-self-center">
+              <h3 class="h3 mb-3 fw-normal">Edit Post</h3>
+               <div>
+                <p>To edit a blog post, select it from the list on the left.</p>
+               </div>
+          </div>
+          <% } %>
+
+    </div>
+
+</body>
+<%- include('partials/footer.ejs') %>
